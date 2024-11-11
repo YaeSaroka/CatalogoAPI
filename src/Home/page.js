@@ -7,6 +7,7 @@ import SearchInput from "react-search-input"; //npm install react-search-input -
 // Carousel
 import Image from "../Imgs/banner1.png";
 import Image2 from "../Imgs/banner2.png";
+import Image3 from "../Imgs/banner3.png";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -67,20 +68,7 @@ const totalProductos = cart.reduce((total, producto) => total + 1, 0);
       <Button variant="primary" onClick={handleShow} className="me-2">
         {name} <FontAwesomeIcon icon={faCartShopping} />
         {totalProductos > 0 && (
-          <div
-            style={{
-              position: "absolute",
-              top: "-10px",
-              right: "-10px",
-              backgroundColor: "red",
-              color: "white",
-              borderRadius: "50%",
-              padding: "5px 10px",
-              fontSize: "14px",
-            }}
-          >
-            {totalProductos}
-          </div>
+          <span className="cart-count ms-2">{totalProductos}</span>
         )}
       </Button>
       <Offcanvas show={show} onHide={handleClose} {...props}>
@@ -201,6 +189,9 @@ function Home() {
           </Carousel.Item>
           <Carousel.Item>
             <img className="d-block w-100" src={Image2} alt="Second slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src={Image3} alt="Second slide" />
           </Carousel.Item>
         </Carousel>
 

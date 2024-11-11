@@ -11,14 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-button .cart-notification {
-  position: absolute;
-  top: -5px;  /* Ajusta este valor según lo necesites */
-  right: -5px;  /* Ajusta este valor según lo necesites */
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 8px;
-  font-size: 14px;
-  font-weight: bold;
-}
