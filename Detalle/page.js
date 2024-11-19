@@ -1,6 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { useCart } from '../Cart/page';
 
+
+//DETALLE DEL PRODUCTO 
+
 function Detalle() {
   const location = useLocation();
   const { addToCart } = useCart(); 
@@ -15,14 +18,14 @@ function Detalle() {
     alert(`${producto.title} se ha agregado al carrito!`);  // Mostrar mensaje de confirmación
   };
 
-  return (
+  //MUESTRA INFORMACIÓN DEL PRODUCTO
+    return (
     <div style={styles.container}>
       <h1 style={styles.title}>{producto.title}</h1>
       <img src={producto.thumbnail} alt={producto.name} style={styles.image} />
       <p style={styles.price}>${producto.price}</p>
       <p style={styles.description}>{producto.description}</p>
       <button onClick={handleAddToCart} style={styles.button}>Agregar a carrito</button>
-      {console.log(producto)}
     </div>
   );
 }

@@ -1,21 +1,21 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// contect
+// CONTEXTO GLOBAL PARA EL CARRITO Y PARA PODER USARLO EN TODAS LAS PÁGINAAAS
 const CartContext = createContext();
 
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({ children }) => {  //acá el children son los componentes hijos que están en cart
   const [cart, setCarrito] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    const savedCart = localStorage.getItem('cart'); //se maneja con key-value
+    return savedCart ? JSON.parse(savedCart) : []; //convierto el texto JSON en un array de JS
   });
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  }, [cart]); //Convierte el estado del carrito en una cadena de texto JSON.
 
   const addToCart = (product) => {
-    setCarrito((prevCart) => prevCart.concat(product));
+    setCarrito((prevCart) => prevCart.concat(product)); //concat es una función de JS que se utiliza para unir dos arrays, no cambia el array original
     console.log(cart, " cart contenido");
   };
 
@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
 
   // Función para eliminar un producto del carrito
   const removeFromCart = (productId) => {
-    setCarrito((prevCart) => prevCart.filter(product => product.id !== productId));
+    setCarrito((prevCart) => prevCart.filter(product => product.id !== productId)); // creo un nuevo arreglo que excluye el producto con el id que me pasaron.
   };
 
   return (

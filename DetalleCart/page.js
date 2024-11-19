@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
 
+//DETALLE DEL CARRITO
 function Detalles() {
   const location = useLocation();
   const { Norepetidos, repetidos, totalCarrito } = location.state || {};

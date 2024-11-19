@@ -49,9 +49,11 @@ function OffCanvasExample({ name, ...props }) {
   });
 
   //SACA PRODUCTOS REPETIDOS
+  //el reduce permite acumular o reducir un objeto del cart a un solo valor
   useEffect(() => {
     const repetidos = cart.reduce((contador, producto) => {
-      contador[producto.title] = (contador[producto.title] || 0) + 1;
+      contador[producto.title] = (contador[producto.title] || 0) + 1; //si el producto ya está en el contador, toma su valor actual. Sino usamos cero como valor inicial. 
+      //uso el titulo del producto como clave
       return contador;
     }, {});
 
@@ -59,12 +61,14 @@ function OffCanvasExample({ name, ...props }) {
     const arrayUnicos = cart.filter(
       (producto, index, cart) =>
         index === cart.findIndex((p) => p.title === producto.title)
+      //Busca el índice del primer producto en el carrito cuyo titulo coincide con el titulo del producto actual.
     ); // saca todos los productos repetidos :(
     setNoRepetidos(arrayUnicos);
   }, [cart]);
 
   return (
     <>
+      {/* OFFCANVAS DEL CARRITO */}
       <Button variant="primary" onClick={handleShow} style={styles.btnPrimary}>
         {name} <FontAwesomeIcon icon={faCartShopping} />
       </Button>
@@ -135,6 +139,7 @@ function Home() {
     fetchProducts();
   }, []);
 
+  //FUNCIÓN PARA BUSCAR PRODUCTOS CON API
   const handleSearch = async (term) => {
     if (term) {
       try {
@@ -154,7 +159,7 @@ function Home() {
 
   return (
     <>
-
+      {/* NAVBAR */}
       <Navbar expand="lg" style={styles.navbar}>
         <Container fluid>
           <Navbar.Brand href="#">
@@ -193,6 +198,7 @@ function Home() {
         </Container>
       </Navbar>
 
+      {/* CAROUSEL */}
       <Container>
         <Carousel style={styles.caro}>
           <Carousel.Item>

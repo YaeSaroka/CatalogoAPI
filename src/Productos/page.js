@@ -23,6 +23,7 @@ const Productos = () => {
         const response = await axios.get('https://dummyjson.com/products');
         setProductos(response.data.products);
         const categoriasUnicas = [...new Set(response.data.products.map(producto => producto.category))];
+        //mapeo las categorías, evito las duplicadas y las guardo en un array de filtroo
         setFiltro(categoriasUnicas);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -40,15 +41,17 @@ const Productos = () => {
     setSelectedValue(event.target.value);
   };
 
+  //FUNCIÓN PARA RENDERAR LOS PRODUCTOS
   const renderProducts = () => {
     const productosFiltrados = productos
-      .filter(createFilter(searchTerm, ['title', 'description']))
-      .filter(producto => !selectedValue || producto.category === selectedValue);
+      .filter(createFilter(searchTerm, ['title', 'description'])) //filtro los productos segun titulo o descripcion
+      .filter(producto => !selectedValue || producto.category === selectedValue); //filtro los productos segun categoría. Si no hay una seleccionada muestro todo. 
 
     if (productosFiltrados.length === 0) {
       return <div style={styles.noResults}>No se encontró nada</div>;
     }
-
+    
+    //Si tengo porductos filtrados, mapeo cada producto y lo muestro
     return productosFiltrados.map((producto) => (
       <div key={producto.id} style={styles.product}>
         <img src={producto.thumbnail} alt={producto.title} style={styles.image} />
