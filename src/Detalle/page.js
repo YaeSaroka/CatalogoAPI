@@ -17,14 +17,12 @@ function Detalle() {
       <img src={producto.thumbnail} alt={producto.name} style={styles.image} />
       <p style={styles.price}>Precio: ${producto.price}</p>
       <p style={styles.description}>{producto.description}</p>
-      <button onClick={() => addToCart(producto)}>Agregar a carrito</button>
+      <button onClick={() => addToCart(producto)} style={styles.addToCartButton}>Agregar a carrito</button>
       {console.log(producto)}
     </div>
-    
     </>
   );
 }
-
 
 /* en caso de tener más imagenes en reviews
 <Carousel>
@@ -46,13 +44,13 @@ const styles = {
     backgroundColor: '#ffffff',
     borderRadius: '10px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-    border: '1px solid #e0e0e0',
+    border: '1px solid #fcd3d9', // Rosa suave
   },
   title: {
     fontSize: '26px',
     fontWeight: 'bold',
     marginBottom: '15px',
-    color: '#333333',
+    color: '#FF77B3', // Rosa brillante
     textAlign: 'center',
   },
   image: {
@@ -60,7 +58,7 @@ const styles = {
     height: 'auto',
     borderRadius: '10px',
     marginBottom: '15px',
-    border: '1px solid #e0e0e0',
+    border: '1px solid #fcd3d9', // Rosa suave
   },
   description: {
     fontSize: '18px',
@@ -71,9 +69,24 @@ const styles = {
   },
   price: {
     fontSize: '20px',
-    color: '#27ae60',
+    color: '#FF77B3', // Rosa brillante
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  addToCartButton: {
+    backgroundColor: '#FF77B3', // Rosa brillante
+    color: '#fff',
+    border: 'none',
+    padding: '12px 20px',
+    fontSize: '16px',
+    borderRadius: '50px',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+    marginTop: '20px',
+    ':hover': {
+      backgroundColor: '#f5dbdf', // Rosa más suave en hover
+    },
   },
 };
 
