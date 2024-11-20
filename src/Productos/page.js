@@ -50,6 +50,7 @@ const Productos = () => {
   };
 
   //FUNCIÓN PARA RENDERAR LOS PRODUCTOS
+  const { addToCart, getTotalQuantity } = useCart(); 
   const renderProducts = () => {
     const productosFiltrados = productos
       .filter(createFilter(searchTerm, ['title', 'description'])) //filtro los productos segun titulo o descripcion
@@ -66,7 +67,7 @@ const Productos = () => {
         <h3 style={styles.productTitle}>{producto.title}</h3>
         <p style={styles.description}>{producto.description}</p>
         <div style={styles.price}>${producto.price}</div>
-        <button style={styles.button}>Añadir al carrito</button>
+        <button onClick={() => addToCart(producto)}  style={styles.button}>Añadir al carrito</button>
       </div>
     ));
   };
